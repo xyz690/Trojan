@@ -175,6 +175,7 @@ EOF
 	#申请https证书
 	mkdir /usr/src/trojan-cert /usr/src/trojan-temp
 	curl https://get.acme.sh | sh
+    ~/.acme.sh --set-default-ca --server letsencrypt
 	~/.acme.sh/acme.sh  --issue  -d $your_domain  --standalone
     	~/.acme.sh/acme.sh  --installcert  -d  $your_domain   \
         --key-file   /usr/src/trojan-cert/private.key \
