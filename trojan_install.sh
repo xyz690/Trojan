@@ -127,7 +127,7 @@ $systemPackage -y install  nginx wget unzip zip curl tar >/dev/null 2>&1
 systemctl enable nginx
 systemctl stop nginx
 green "======================="
-blue "请输入绑定到本VPS的域名"
+blue "请输入绑定到本VPS的域名，如：www.xxx.com"
 green "======================="
 read your_domain
 real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
@@ -184,10 +184,15 @@ EOF
 	systemctl start nginx
         cd /usr/src
 	#wget https://github.com/trojan-gfw/trojan/releases/download/v1.13.0/trojan-1.13.0-linux-amd64.tar.xz
-	wget https://api.github.com/repos/trojan-gfw/trojan/releases/latest
-	latest_version=`grep tag_name latest| awk -F '[:,"v]' '{print $6}'`
+	# wget https://api.github.com/repos/trojan-gfw/trojan/releases/latest   # 当目录文件中存在latest时，并不会下载最新的，而是会读取已存在的latest
+	wget https://api.github.com/repos/trojan-gfw/trojan/releases/latest -O latest-trojan
+	latest_version=`grep tag_name latest-trojan| awk -F '[:,"v]' '{print $6}'`
 	wget https://github.com/trojan-gfw/trojan/releases/download/v${latest_version}/trojan-${latest_version}-linux-amd64.tar.xz
 	tar xf trojan-${latest_version}-linux-amd64.tar.xz
+
+    # 删除文件，节省空间以及便于重装
+	rm -rf ./trojan-${latest_version}-linux-amd64.tar.xz ./latest-trojan
+
 	#下载trojan WIN客户端
 	wget https://github.com/atrandys/trojan/raw/master/trojan-cli.zip
 	wget -P /usr/src/trojan-temp https://github.com/trojan-gfw/trojan/releases/download/v${latest_version}/trojan-${latest_version}-win.zip
@@ -347,6 +352,7 @@ EOF
 	chmod +x ${systempwd}trojan.service
 	systemctl start trojan.service
 	systemctl enable trojan.service
+    systemctl restart trojan.service # 这里 存在 start trojan.service 失败的问题，重新restart
 	green "======================================================================"
 	green "Trojan已安装完成，请使用以下链接下载trojan客户端，此客户端已配置好所有参数"
 	green "1、复制下面的链接，在浏览器打开，下载客户端"
@@ -439,11 +445,11 @@ function bbr_boost_sh(){
 start_menu(){
     clear
     green " ===================================="
-    green " Trojan 一键安装自动脚本 2020-2-27 更新      "
+    green " Trojan 一键安装自动脚本 2022-12-02 更新      "
     green " 系统：centos7+/debian9+/ubuntu16.04+"
     green " 网站：www.v2rayssr.com （已开启禁止国内访问）"
-    green " 此脚本为 atrandys 的，波仔集成BBRPLUS加速及MAC客户端 "
-    green " Youtube：波仔分享                "
+    green " 此脚本为 atrandys 的，集成BBRPLUS加速及MAC客户端 "
+    green "                 "
     green " ===================================="
     blue " 声明："
     red " *请不要在任何生产环境使用此脚本"

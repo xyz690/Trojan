@@ -163,7 +163,9 @@ EOF
 	if test -s /usr/src/trojan-cert/fullchain.cer; then
         cd /usr/src
 	#wget https://github.com/trojan-gfw/trojan/releases/download/v1.13.0/trojan-1.13.0-linux-amd64.tar.xz
-	wget https://github.com/trojan-gfw/trojan/releases/download/v1.14.0/trojan-1.14.0-linux-amd64.tar.xz
+	# wget https://github.com/trojan-gfw/trojan/releases/download/v1.14.0/trojan-1.14.0-linux-amd64.tar.xz
+    wget https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
+
 	tar xf trojan-1.*
 	#下载trojan客户端
 	wget https://github.com/atrandys/trojan/raw/master/trojan-cli.zip
@@ -329,8 +331,8 @@ start_menu(){
     green " Trojan 一键安装自动脚本      "
     green " 系统：centos7+/debian9+/ubuntu16.04+"
     green " 网站：www.v2rayssr.com （已开启禁止国内访问）              "
-    green " 此脚本为 atrandys 的，波仔集成了BBRPLUS加速 "
-    green " Youtube：波仔分享                "
+    green " 此脚本为 atrandys 的，集成了BBRPLUS加速 "
+    green " 此脚本修改自 波仔分享                "
     green " ===================================="
     echo
     red " ===================================="

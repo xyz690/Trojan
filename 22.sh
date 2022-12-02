@@ -91,7 +91,7 @@ EOF
 	sleep 3s
 	rm -rf /usr/share/nginx/html/*
 	cd /usr/share/nginx/html/
-	wget https://github.com/V2RaySSR/Trojan/raw/master/web.zip
+	wget https://github.com/xyz690/Trojan/raw/master/web.zip
 	unzip web.zip
 	systemctl restart nginx
 
