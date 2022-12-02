@@ -1,5 +1,5 @@
 #!/bin/bash
-＃字体颜色
+# 字体颜色
 blue(){
     echo -e "\033[34m\033[01m$1\033[0m"
 }
@@ -350,9 +350,11 @@ WantedBy=multi-user.target
 EOF
 
 	chmod +x ${systempwd}trojan.service
+    # 使修改生效
+    systemctl daemon-reload
 	systemctl start trojan.service
+    # 开机启动
 	systemctl enable trojan.service
-    systemctl restart trojan.service # 这里 存在 start trojan.service 失败的问题，重新restart
 	green "======================================================================"
 	green "Trojan已安装完成，请使用以下链接下载trojan客户端，此客户端已配置好所有参数"
 	green "1、复制下面的链接，在浏览器打开，下载客户端"

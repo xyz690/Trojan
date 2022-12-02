@@ -16,4 +16,4 @@ Trojan 一键安装自动脚本
 
 curl -O https://raw.githubusercontent.com/xyz690/Trojan/master/Trojan.sh && chmod  +x Trojan.sh && ./Trojan.sh
 
-wget --no-check-certificate https://raw.githubusercontent.com/xyz690/Trojan/master/Trojan.sh && chmod +x Trojan.sh && ./Trojan.sh
+wget -N --no-check-certificate -q -O trojan_install.sh "https://raw.githubusercontent.com/xyz690/Trojan/master/trojan_install.sh" && chmod +x trojan_install.sh && bash trojan_install.sh
