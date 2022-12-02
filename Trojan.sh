@@ -108,7 +108,7 @@ fi
 $systemPackage -y install  nginx wget unzip zip curl tar >/dev/null 2>&1
 systemctl enable nginx.service
 green "======================="
-yellow "请输入绑定到本VPS的域名"
+yellow "请输入绑定到本VPS的域名，如：www.xxx.com"
 green "======================="
 read your_domain
 real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
@@ -149,7 +149,7 @@ EOF
 	#设置伪装站
 	rm -rf /usr/share/nginx/html/*
 	cd /usr/share/nginx/html/
-	wget https://raw.githubusercontent.com/xyz690/Trojan/raw/master/web.zip
+	wget https://github.com/xyz690/Trojan/raw/master/web.zip
     	unzip web.zip
 	systemctl restart nginx.service
 	#申请https证书
@@ -162,11 +162,11 @@ EOF
         --reloadcmd  "systemctl force-reload  nginx.service"
 	if test -s /usr/src/trojan-cert/fullchain.cer; then
         cd /usr/src
-    wget https://raw.githubusercontent.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
+    wget https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
 
 	tar xf trojan-1.*
 	#下载trojan客户端
-	wget https://raw.githubusercontent.com/atrandys/trojan/raw/master/trojan-cli.zip
+	wget https://github.com/atrandys/trojan/raw/master/trojan-cli.zip
 	unzip trojan-cli.zip
 	cp /usr/src/trojan-cert/fullchain.cer /usr/src/trojan-cli/fullchain.cer
 	trojan_passwd=$(cat /dev/urandom | head -1 | md5sum | head -c 8)

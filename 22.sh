@@ -45,7 +45,7 @@ $systemPackage -y install  nginx wget unzip zip curl tar
 systemctl enable nginx
 systemctl stop nginx
 green "======================="
-blue "请输入绑定到本VPS的域名"
+blue "请输入绑定到本VPS的域名，如：www.xxx.com"
 green "======================="
 read your_domain
 real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
@@ -91,7 +91,7 @@ EOF
 	sleep 3s
 	rm -rf /usr/share/nginx/html/*
 	cd /usr/share/nginx/html/
-	wget https://raw.githubusercontent.com/xyz690/Trojan/raw/master/web.zip
+	wget https://github.com/xyz690/Trojan/raw/master/web.zip
 	unzip web.zip
 	systemctl restart nginx
 
