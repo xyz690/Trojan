@@ -149,7 +149,7 @@ EOF
 	#设置伪装站
 	rm -rf /usr/share/nginx/html/*
 	cd /usr/share/nginx/html/
-	wget https://github.com/V2RaySSR/Trojan/raw/master/web.zip
+	wget https://raw.githubusercontent.com/xyz690/Trojan/raw/master/web.zip
     	unzip web.zip
 	systemctl restart nginx.service
 	#申请https证书
@@ -162,13 +162,11 @@ EOF
         --reloadcmd  "systemctl force-reload  nginx.service"
 	if test -s /usr/src/trojan-cert/fullchain.cer; then
         cd /usr/src
-	#wget https://github.com/trojan-gfw/trojan/releases/download/v1.13.0/trojan-1.13.0-linux-amd64.tar.xz
-	# wget https://github.com/trojan-gfw/trojan/releases/download/v1.14.0/trojan-1.14.0-linux-amd64.tar.xz
-    wget https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
+    wget https://raw.githubusercontent.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.xz
 
 	tar xf trojan-1.*
 	#下载trojan客户端
-	wget https://github.com/atrandys/trojan/raw/master/trojan-cli.zip
+	wget https://raw.githubusercontent.com/atrandys/trojan/raw/master/trojan-cli.zip
 	unzip trojan-cli.zip
 	cp /usr/src/trojan-cert/fullchain.cer /usr/src/trojan-cli/fullchain.cer
 	trojan_passwd=$(cat /dev/urandom | head -1 | md5sum | head -c 8)
@@ -285,7 +283,7 @@ EOF
 	green "2、将下载的压缩包解压，打开文件夹，打开start.bat即打开并运行Trojan客户端"
 	green "3、打开stop.bat即关闭Trojan客户端"
 	green "4、Trojan客户端需要搭配浏览器插件使用，例如switchyomega等"
-	green "访问  https://www.v2rayssr.com/trojan-1.html ‎ 下载 浏览器插件 及教程"
+	green "访问  https://www.itblogcn.com/article/1257.html ‎ 下载 浏览器插件 及教程"
 	green "======================================================================"
 	else
         red "================================"
@@ -330,7 +328,7 @@ start_menu(){
     green " ===================================="
     green " Trojan 一键安装自动脚本      "
     green " 系统：centos7+/debian9+/ubuntu16.04+"
-    green " 网站：www.v2rayssr.com （已开启禁止国内访问）              "
+    green " 网站：www.itblogcn.com （已开启禁止国内访问）              "
     green " 此脚本为 atrandys 的，集成了BBRPLUS加速 "
     green " 此脚本修改自 波仔分享                "
     green " ===================================="
