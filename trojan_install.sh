@@ -123,6 +123,7 @@ elif [ "$release" == "ubuntu" ]; then
 elif [ "$release" == "debian" ]; then
     apt-get update
 fi
+
 $systemPackage -y install  nginx wget unzip zip curl tar >/dev/null 2>&1
 systemctl enable nginx
 systemctl stop nginx
@@ -355,11 +356,17 @@ EOF
 	systemctl start trojan.service
     # 开机启动
 	systemctl enable trojan.service
-	green "======================================================================"
-	green "Trojan已安装完成，请使用以下链接下载trojan客户端，此客户端已配置好所有参数"
+	blue "==========================Trojan已安装完成================================"
+    green "   "
+    green "你的配置信息，已有客户端直接新增Trojan配置即可！"
+    red "服务器地址：${your_domain}"
+    red "服务器端口：443"
+    red "密码：${trojan_passwd}"
+    green "   "
+	blue "没有客户端的请使用以下链接下载trojan客户端，此客户端已配置好所有参数"
 	green "1、复制下面的链接，在浏览器打开，下载客户端"
 	blue "Windows客户端下载：http://${your_domain}/$trojan_path/trojan-cli.zip"
-        blue "MacOS客户端下载：http://${your_domain}/$trojan_path/trojan-mac.zip"
+    blue "MacOS客户端下载：http://${your_domain}/$trojan_path/trojan-mac.zip"
 	green "2、Windows将下载的客户端解压，打开文件夹，打开start.bat即打开并运行Trojan客户端"
 	green "3、MacOS将下载的客户端解压，打开文件夹，打开start.command即打开并运行Trojan客户端"
 	green "Trojan推荐使用 Mellow 工具代理（WIN/MAC通用）下载地址如下："
